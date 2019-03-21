@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text} from "react-native"
+import {SafeAreaView, Text, StatusBar} from "react-native"
 import style from "./Style"
 
 class ResultScreen extends Component {
@@ -23,10 +23,10 @@ class ResultScreen extends Component {
 
         // const ds = ListView.DataSource.
         return (
-            <View style={style.container}>
+            <SafeAreaView style={style.container}>
                 <Text>This is the result page {this.state.city}</Text>
                 {/* <ListView dataSource={ds.DataSource.} */}
-            </View>
+            </SafeAreaView>
         );
     }
 }

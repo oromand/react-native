@@ -1,5 +1,5 @@
 import React  from "react"
-import {View, Text, TextInput, SafeAreaView, ScrollView, Button} from "react-native"
+import {View, Text, TextInput, SafeAreaView, ScrollView, Button, FlatList} from "react-native"
 import { createStackNavigator } from "react-navigation";
 import Icon, {Ionicons} from 'react-native-vector-icons/Ionicons';
 import HeaderButtons, { Item } from 'react-navigation-header-buttons';
@@ -42,18 +42,22 @@ class HomeScreen extends React.Component {
         this.state.city && this.props.navigation.navigate("Result", {city: this.state.city})
       }
 
+      renderItem({item}) {
+          return <Text style={style.text} key={item.id}>{item.label}</Text>
+      }
+
       render() {
-    
         return (
             <View style={style.container}>
-                <TextInput 
-                    style={style.input} 
-                    placeholder="Saisir la ville" 
-                    value={this.state.city}
-                    keyboardType="web-search" 
-                    onChangeText={(text) => this.setState({city: text})}/>
-                <Button title="Rechercher" onPress={() => this.searchCities()}/>
-                <Text>{this.state.city}</Text>
+                <FlatList data={[
+                    {id: "1", label: "1"},
+                    {id: "2", label: "2"},
+                    {id: "3", label: "3"},
+            ]} renderItem={(item) => this.renderItem(item)} 
+            keyExtractor={(item) => item.id}
+            >
+
+                </FlatList>
             </View>
         );
       }
